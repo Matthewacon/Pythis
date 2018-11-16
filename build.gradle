@@ -1,0 +1,42 @@
+plugins {
+ id 'java'
+}
+
+group 'io.github.matthewacon'
+version '0.0.1'
+
+sourceCompatibility = targetCompatibility = 1.8
+
+repositories {
+ jcenter()
+}
+
+sourceSets {
+ pythis {
+  java.srcDirs = ['src/']
+  resources.srcDirs = ['res/']
+ }
+}
+
+configurations {
+ pythisRuntime.extendsFrom(pythisCompile)
+}
+dependencies {
+ pythisCompile files('../pal/build/classes/java/pal', '../Delphos/build/classes/java/delphos')
+}
+
+jar {
+ from sourceSets.pythis.output
+ manifest.attributes(
+  //TODO remove Main-Class attribute
+//  'Main-Class' : 'io.github.matthewacon.pythis.Test',
+  'Created-By' : 'Matthewacon (Matthew Barichello)'
+ )
+}
+
+task run(type: JavaExec, dependsOn: jar) {
+ standardOutput = System.out
+ errorOutput = System.err
+ classpath = files('../pal/build/classes/java/pal', jar.outputs.files.getAt(0).absolutePath)
+// main = 'io.github.matthewacon.pythis.Test'
+}
