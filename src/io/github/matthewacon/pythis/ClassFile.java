@@ -1,10 +1,10 @@
 package io.github.matthewacon.pythis;
 
 import io.github.matthewacon.delphos.api.AbstractSyntaxTree;
-import io.github.matthewacon.delphos.api.annotations.field.ArrayLength;
-import io.github.matthewacon.delphos.api.annotations.method.Verifies;
-import io.github.matthewacon.delphos.api.annotations.type.SubtypeCase;
-import io.github.matthewacon.delphos.api.annotations.field.Constants;
+import io.github.matthewacon.delphos.api.annotations.conditional.Constants;
+import io.github.matthewacon.delphos.api.annotations.conditional.Verifies;
+import io.github.matthewacon.delphos.api.annotations.structural.ArrayLength;
+import io.github.matthewacon.delphos.api.annotations.structural.SubtypeCase;
 
 public final class ClassFile implements AbstractSyntaxTree {
  @SubtypeCase(
